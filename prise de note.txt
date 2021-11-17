@@ -1,0 +1,145 @@
+Dans VueJS : 
+- On a la partie vue "template"
+- La partie code JS
+_________________________________________________________________________________________________________________________
+
+Toujours même principe :
+1 - On instancie Vue
+2 - J'ajoute mon composant vue sur l'element qui a l'ID #app
+3 - Je lui indique les variables a recevoir 
+4 - Je lui donne les différentes méthodes qui sont disponibles
+_________________________________________________________________________________________________________________________
+
+Différence VueJS - React:
+
+Même philosophie : Créer des composant et dans ces composants partager la logique
+
+Principe de React : 
+
+C'est de se dire voilà le template et ce template dépend d'un state et 
+ce state on va pouvoir le modifier et dès qu'on le modifie ce state va re-rendre la vue
+Pour indiquer à React qui faut re-rendre les choses ont a le setState dans lequel on lui change 
+les propriété qui sont au niveau de notre vue, dans React ça se fait manuellement : on dit
+manuellement voilà le nouveau State et à chaque fois ont va lui reprécisé tout le State
+
+Principe de VueJS : 
+
+On retrouve ce principe de template
+On retrouve les fonction mounted et unmounted qui permet de dire lorsque l'element est monté ou non
+mais la ou y'a une grosse différence c'est : il n'est pas utile sur VueJS de précisé on va modifier le State
+parce que VueJS le fait de manière implicite (sans être formellement exprimé), dès qu'on va modifier une 
+variable qui est envoyée à la vue, il va le savoir et le detecter automatiquement et va re-rendre notre partie
+HTML et notre partie template
+
+DONC la PRINCIPALE différence c'est que :
+
+ReactJS fait les chose de manière explicite ( on doit lui préciser qu'on modifie le STATE) 
+VueJS fait les chose de manière implicite (sans être formellement exprimé)
+
+Donc VueJS va avoir pour effet d'écrire un peu moins de code et d'avoir une écriture un peu plus naturelle
+_________________________________________________________________________________________________________________________
+
+J'ai ces différents DIRECTIVE dans vueJS: 
+
+1 - v-bind: liaison des données
+2 - v-for: Associer un tableau à des éléments
+3 - v-if: affichage conditionnelle
+4 - v-on: écouter les événements DOM et exécuter du JavaScript lorsqu'ils sont déclenchés
+5 - v-model: créer une liaison de données bidirectionnelle (Qui peut assurer dans les deux sens la liaison entre deux éléments)
+sur les champs de formulaire (input, checkbox, select ou textarea)
+6 - true-value="oui"
+    false-value="non" pour les checkbox
+_________________________________________________________________________________________________________________________
+
+Point important:
+- On ne peux pas ajouter de nouvelles propriété à un objet
+- Et on ne peux pas accèder à un element d'un tableau directement
+par son index
+
+_________________________________________________________________________________________________________________________
+
+Comment fonctionne un composant ou un element VueJS de manière plus générale - LIFECYLCE DIAGRAMME:
+- https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
+
+_________________________________________________________________________________________________________________________
+
+ES6: 
+
+Prenons le cas d’un fabriquant de jouet pour bébés.
+S’il veut pouvoir vendre ses jouets au grand public alors ses jouets devront respecter une certaine norme, un certain standard, ISO quelque chose.
+Par exemple, les jouets pour bébé n’auront jamais d’angles pointus. Sécurité oblige…
+
+Alors ECMAScript c’est exactement ça, c’est un standard de langage de programmation, il definit:
+– La syntaxe
+– Les types de variable
+et encore pas mal d’autres choses…
+
+Tout simplement, Javascript est un des langages qui respecte le standard ECMAScript. C’est tout !
+Il y a d’autre langages qui respectent ce standard, comme ActionScript ou JScript.
+
+_________________________________________________________________________________________________________________________
+
+Règles:
+- Chaque instance (ou composant) a ce qu'on appel un "cycle de vie"
+- le $ c'est tou simplement une convention, c'est pour faire la différence entre les proriétés qui sont dans data et les 
+proritiétés qui servent juste à la logique du code
+
+_________________________________________________________________________________________________________________________
+
+4) Proriété combinées & Watchers (Computed Properties and Watchers) : 
+
+Proprété combinées:  
+
+Propriété qui dépendent des proriété qui sont au niveau de notre instance
+Si dans notre proriétés (function en vrai) la proriété présente dans data n'est pas utilisé alors
+cette fonction ne sera pas executer -> Finalité, pas d'execution de code inutile.
+L'avantage des ces méthodes computed c'est qu'il va entre guillement mettre en cache automatiquement
+les valeurs et il ne fera la modification que lorsque une variable qui a été utilisée à l'intérieur a
+été modifiée. Et c'est très utile pour la performance. En gros utilisé des méthodes partout au lieu de 
+propriété computed a un gros inconvénient au niveau performance.
+
+Par default les proriété computed ne sont que des Getter, on ne peux qu'acceder donc et non pas 
+faire des redéfinition. Donc que je fais un v-model, les éléments ne sont pas modifié directement par exemple
+quand je les modifient avec un input.
+
+On peux cependant définir des getters et des setters pour un fonction.
+
+Watcher: Permet de détecter quand il y a des changement.
+
+_________________________________________________________________________________________________________________________
+
+5) Les Directives :
+
+1 - v-bind: liaison des données
+2 - v-for: Associer un tableau à des éléments
+3 - v-if: affichage conditionnelle
+4 - v-on: (@ aussi) écouter les événements DOM et exécuter du JavaScript lorsqu'ils sont déclenchés
+5 - v-model: créer une liaison de données bidirectionnelle (Qui peut assurer dans les deux sens la liaison entre deux éléments)
+sur les champs de formulaire (input, checkbox, select ou textarea)
+6 - true-value="oui"
+    false-value="non" pour les checkbox
+
+Il est possible aussi de créer nots propres directives
+
+Modifieur: Permettent au niveau du code HTML de précisé le comportement à adopter, il peuvent prendre
+différentes valeur et on peux même les enchainer :
+
+- .prevent
+- .stop : stop la propagation -> permet d'éviter que l'événement fasse des bulles vers le haut
+(EMPECHE LE BUBBLE CLIQUE)
+- .capture : permet de capturer ce clique là
+- .self : permet de dire "il faut vraiment qu'on est cliquer sur cette element là"
+Par exemple si on clique sur un element enfant ça ne detectera pas le clique 
+- .lazy : la modification est effective quand on sort du champs
+- .number : converti ce qu'on met en chiffre
+- .trim : efface les espace
+
+Ces MODIFIEUR là permet d'avoir un peu plus de controle sur le fonctionnement et de ne pas forcement
+Nous embeter a rajouter un code à ce niveau là.
+
+Et ça marche comme ça pour les événement de type :
+- click et autre aussi 
+_________________________________________________________________________________________________________________________
+
+Les Filtres:
+
